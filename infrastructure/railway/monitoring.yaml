@@ -1,0 +1,25 @@
+monitoring:
+  metrics:
+    - name: "http_request_duration_seconds"
+      type: "histogram"
+      labels:
+        - "endpoint"
+        - "method"
+        - "status_code"
+    
+    - name: "database_connection_pool"
+      type: "gauge"
+      labels:
+        - "database"
+        - "status"
+
+  alerts:
+    - name: "high_latency"
+      condition: "http_request_duration_seconds > 2"
+      duration: "5m"
+      severity: "warning"
+    
+    - name: "database_connections"
+      condition: "database_connection_pool{status='used'} > 80"
+      duration: "2m"
+      severity: "critical" 

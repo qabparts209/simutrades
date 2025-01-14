@@ -1,0 +1,21 @@
+domains:
+  primary: "simutrades.com"
+  aliases:
+    - "www.simutrades.com"
+    - "app.simutrades.com"
+    - "api.simutrades.com"
+    
+  redirects:
+    - source: "simutrades.com/*"
+      destination: "www.simutrades.com/:splat"
+      permanent: true
+      
+    - source: "/blog"
+      destination: "https://blog.simutrades.com"
+      permanent: false
+      
+  protection:
+    password_protection:
+      staging:
+        enabled: true
+        password: "${STAGING_PASSWORD}" 

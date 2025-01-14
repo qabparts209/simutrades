@@ -1,0 +1,13 @@
+- zone_id: ${CLOUDFLARE_ZONE_ID}
+  patterns:
+    - "*.simutrades.com/*"
+  settings:
+    browser_cache_ttl: 14400
+    edge_cache_ttl: 7200
+    cache_level: "aggressive"
+    always_online: "on"
+    development_mode: "off"
+    minify:
+      css: "on"
+      html: "on"
+      js: "on" 

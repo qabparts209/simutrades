@@ -1,0 +1,24 @@
+performance:
+  optimization:
+    minify:
+      html: true
+      css: true
+      javascript: true
+    
+    brotli: true
+    early_hints: true
+    http3: true
+    zero_rtt: true
+    
+    image_optimization:
+      enabled: true
+      webp: true
+      quality: "auto"
+      
+    rocket_loader: true
+    mobile_redirect: true
+    
+    prefetch:
+      enabled: true
+      prefetch_links: true
+      preload_fonts: true 

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "types": ["node", "vitest"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ]
+  },
+  "include": ["**/*.ts", "**/*.d.ts", "vitest.config.ts"],
+  "exclude": ["node_modules"]
+} 

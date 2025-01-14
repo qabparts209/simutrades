@@ -1,0 +1,22 @@
+alerts:
+  - name: "High Error Rate"
+    type: "error_rate"
+    threshold: 1.0
+    timeWindow: 10m
+    actions:
+      - type: "slack"
+        channel: "#alerts"
+        priority: "high"
+      - type: "email"
+        recipients: ["team@simutrades.com"]
+      - type: "pagerduty"
+        serviceKey: "${PAGERDUTY_SERVICE_KEY}"
+
+  - name: "Performance Degradation"
+    type: "performance"
+    metric: "p95"
+    threshold: 2000
+    timeWindow: 5m
+    actions:
+      - type: "slack"
+        channel: "#performance" 

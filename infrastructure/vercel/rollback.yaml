@@ -1,0 +1,18 @@
+rollback:
+  procedures:
+    - name: "instant_rollback"
+      type: "automatic"
+      triggers:
+        - error_rate_threshold: 5
+        - p95_latency_threshold: 1000
+      actions:
+        - revert_to: "last_successful_deployment"
+        - notify_slack: true
+        
+    - name: "gradual_rollback"
+      type: "manual"
+      steps:
+        - reduce_traffic: 50
+        - monitor_duration: 300
+        - if_healthy: "continue"
+        - if_unhealthy: "revert" 

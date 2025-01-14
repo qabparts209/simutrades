@@ -1,0 +1,23 @@
+# Automatic scaling configuration
+scaling:
+  services:
+    backend:
+      min_instances: 2
+      max_instances: 10
+      target_cpu_utilization: 70
+      target_memory_utilization: 80
+      scale_up_cooldown: 180
+      scale_down_cooldown: 300
+      
+    websocket:
+      min_instances: 2
+      max_instances: 8
+      target_cpu_utilization: 65
+      target_memory_utilization: 75
+
+  databases:
+    timescaledb:
+      storage_autoscaling:
+        min_gb: 50
+        max_gb: 500
+        scale_increment: 50 

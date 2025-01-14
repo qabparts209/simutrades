@@ -1,0 +1,17 @@
+- zone_id: ${CLOUDFLARE_ZONE_ID}
+  email_routing:
+    enabled: true
+    routes:
+      - name: "Support Route"
+        matchers:
+          - type: "literal"
+            value: "support@simutrades.com"
+        actions:
+          - type: "forward"
+            value: ["helpdesk@simutrades.com"]
+      - name: "Catch-all Route"
+        matchers:
+          - type: "catch_all"
+        actions:
+          - type: "forward"
+            value: ["inbox@simutrades.com"] 

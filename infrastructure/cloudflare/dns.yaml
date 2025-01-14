@@ -1,0 +1,14 @@
+name: simutrades.com
+type: A
+proxied: true
+value: ${VERCEL_IP}
+
+name: api.simutrades.com
+type: CNAME
+proxied: true
+value: ${RAILWAY_DOMAIN}
+
+name: www.simutrades.com
+type: CNAME
+proxied: true
+value: simutrades.com 

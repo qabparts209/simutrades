@@ -1,0 +1,18 @@
+slack:
+  workspace: "SimuTrades"
+  channels:
+    - name: "#alerts"
+      rules:
+        - type: "error"
+          priority: "high"
+    - name: "#performance"
+      rules:
+        - type: "performance"
+    - name: "#deployments"
+      rules:
+        - type: "release"
+  commands:
+    - name: "/status"
+      description: "Get system status"
+    - name: "/errors"
+      description: "Get recent errors" 

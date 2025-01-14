@@ -1,0 +1,10 @@
+- zone_id: ${CLOUDFLARE_ZONE_ID}
+  settings:
+    security_level: "high"
+    ssl: "strict"
+    always_use_https: true
+    min_tls_version: "1.2"
+    tls_1_3: "on"
+    automatic_https_rewrites: "on"
+    opportunistic_encryption: "on"
+    universal_ssl: "on" 

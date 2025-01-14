@@ -1,0 +1,16 @@
+- zone_id: ${CLOUDFLARE_ZONE_ID}
+  settings:
+    web_analytics:
+      enabled: true
+      site_tag: "${CLOUDFLARE_ANALYTICS_TAG}"
+    email_routing:
+      enabled: true
+      catch_all:
+        action: "forward"
+        value: ["support@simutrades.com"]
+    custom_rules:
+      - description: "Forward all support emails"
+        enabled: true
+        expression: "starts_with(email.to, 'support@')"
+        action: "forward"
+        value: ["support@simutrades.com"] 

@@ -1,0 +1,26 @@
+# Advanced DDoS protection rules
+security:
+  ddos:
+    adaptive_protection:
+      enabled: true
+      sensitivity_level: "high"
+    
+    rate_limiting:
+      - threshold: 100
+        period: 60
+        action: "challenge"
+        match:
+          request:
+            methods: ["POST", "PUT", "DELETE"]
+            
+      - threshold: 1000
+        period: 60
+        action: "js_challenge"
+        match:
+          request:
+            methods: ["GET"]
+            
+    layer7_protection:
+      enabled: true
+      mitigation_timeout: 3600
+      challenge_ttl: 21600 

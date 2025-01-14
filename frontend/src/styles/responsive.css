@@ -1,0 +1,29 @@
+@layer utilities {
+  .touch-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tap-highlight-none {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (hover: none) {
+  .hover-only {
+    display: none;
+  }
+}
+
+/* Progressive Web App styles */
+@media all and (display-mode: standalone) {
+  .pwa-only {
+    display: block;
+  }
+} 

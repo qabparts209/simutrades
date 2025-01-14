@@ -1,0 +1,24 @@
+backup:
+  databases:
+    timescaledb:
+      full_backup:
+        schedule: "0 2 * * *"  # Daily at 2 AM
+        retention:
+          days: 30
+          copies: 10
+      incremental_backup:
+        schedule: "0 */4 * * *"  # Every 4 hours
+        retention:
+          days: 7
+          copies: 42
+      
+      point_in_time_recovery:
+        enabled: true
+        retention_period: "7d"
+        
+  storage:
+    uploaded_files:
+      schedule: "0 3 * * *"  # Daily at 3 AM
+      retention:
+        days: 90
+        copies: 30 

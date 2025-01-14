@@ -1,0 +1,20 @@
+deploy_hooks:
+  pre_deploy:
+    - name: "dependency_audit"
+      command: "npm audit"
+      
+    - name: "type_check"
+      command: "tsc --noEmit"
+      
+    - name: "test_coverage"
+      command: "npm run test:coverage"
+      
+  post_deploy:
+    - name: "smoke_tests"
+      command: "npm run test:e2e"
+      
+    - name: "performance_monitoring"
+      command: "npm run lighthouse"
+      
+    - name: "notify_team"
+      webhook: "${SLACK_DEPLOY_WEBHOOK}" 
