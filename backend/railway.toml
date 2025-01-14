@@ -1,0 +1,49 @@
+[build]
+builder = "nixpacks"
+buildCommand = "python -m pip install --upgrade pip && pip install -r requirements.txt"
+providers = ["python"]
+
+[deploy]
+startCommand = "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+healthcheckPath = "/health"
+restartPolicyType = "on_failure"
+
+[service]
+name = "simutrades-api"
+internal_port = 8000
+
+[[services.ports]]
+port = 80
+handlers = ["http"]
+force_https = true
+
+[database]
+name = "simutrades"
+engine = "postgresql"
+extensions = ["timescaledb"]
+
+[redis]
+name = "simutrades-cache"
+
+[monitoring]
+provider = "datadog"
+api_key = "${DATADOG_API_KEY}"
+metrics_enabled = true
+logs_enabled = true
+traces_enabled = true
+
+[alerts]
+cpu_threshold = 80
+memory_threshold = 85
+error_rate_threshold = 1 
+
+[backups]
+enabled = true
+retention_period = "30d"
+schedule = "0 0 * * *"  # Daily at midnight
+storage = "s3"
+
+[backups.s3]
+bucket = "${BACKUP_BUCKET_NAME}"
+region = "us-east-1"
+path = "database-backups" 
